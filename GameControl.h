@@ -7,11 +7,11 @@ class GameControl : public MenuProgram
 {
 public:
 	GameControl();
-	static int countTimes;
+	int countTimes;
 	Computer* comG;
 	Human* huG;
 	void takeTurn();
-	void getBoard();
+	void shootedPosition();
 	void gameOver();
 	bool isGameOver();
 	void continueGame();
