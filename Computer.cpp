@@ -17,7 +17,7 @@ void Computer::choosePosition()
 	srand(time(0));
 	int ship[6]; // chan:0,2,4 x, le:1,3,5 y
 	for (int i = 0; i < 6; i++) {
-		int r = rand() % 9 ; // 0 den 8
+		int r = rand() % 8 ; // 0 den 7
 		int j = 1;
 		bool flagr = false;
 		while ((i % 2) && (j < 6)) // i le
@@ -48,8 +48,8 @@ void Computer::shoot()
 	srand(time(0));
 	int x = rand() % 10; 
 	int y = rand() % 10;
-	shootPositon[0] = x;
-	shootPositon[1] = y;
+	shootPosition[0] = x;
+	shootPosition[1] = y;
 }
 
 Computer::~Computer()

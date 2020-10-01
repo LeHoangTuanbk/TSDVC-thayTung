@@ -9,9 +9,11 @@ class Player
 public:
 	string name;
 	int score;
-	int shootPositon[2]; //x,y
+	int shootPosition[2]; //x,y
 	int Board[10][10];
 	virtual void choosePosition() = 0;
 	virtual void shoot() = 0;
+	void setBoard(int x, int y, int v);
+	int getBoard(int x, int y);
 };
 

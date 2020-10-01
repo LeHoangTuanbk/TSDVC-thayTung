@@ -57,8 +57,8 @@ void Human::choosePosition()
 
 void Human::shoot()
 {
-	cout << "Enter shoot positon: [x,y]= ";
-	cin >> shootPositon[0] >> shootPositon[1];
+	cout << "Enter your shoot positon: [x,y]= ";
+	cin >> shootPosition[0] >> shootPosition[1];
 }
 
 

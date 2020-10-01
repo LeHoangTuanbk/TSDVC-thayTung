@@ -35,8 +35,10 @@ void GameControl::doTask(const int& choice)
 
 void GameControl::showStatus()
 {
-	cout << "  Computer            Human" << endl;
+	
+	
 	if (countTimes == 1) {
+		cout << "  Computer            Human" << endl;
 		countTimes++;
 		for (int i = 0; i < 11; i++)
 		{
@@ -69,6 +71,7 @@ void GameControl::showStatus()
 	{
 		// start morning there
 		// show status new here;
+		countTimes++;
 		cout << endl << "The status of battle ship: " << endl;
 		cout << "  Computer            Human" << endl;
 		for (int i = 0; i < 11; i++)
@@ -96,7 +99,7 @@ void GameControl::showStatus()
 						switch (comG->Board[i - 1][(j - 3) % 10])
 						{
 						case 0:
-							cout << ".";
+							cout << "*"; // an board cua com di
 							break;
 						case  -2:
 							cout << "!";
@@ -105,7 +108,7 @@ void GameControl::showStatus()
 							cout << "&";
 							break;
 						case 1:
-							cout << "1";
+							cout << "*";
 							break;
 						}
 					}
@@ -169,37 +172,39 @@ void GameControl::shootedPosition()
 	// . : 0, * k in: -2: shooted no ship, -1: sink, shooted at ship, 1: ship havent shooted.
 	if (countTimes > 2)
 	{
-		cout << "Computer shooted at [x,y] = "<<"["<<comG->shootPositon[0]<<","<< comG->shootPositon[1] <<"]"<<endl;
-		cout << "Human shooted at [x,y] = " << "[" << huG->shootPositon[0] << "," << huG->shootPositon[1] << "]" << endl;
+		cout << "Computer shooted at [x,y] = "<<"["<<comG->shootPosition[0]<<","<< comG->shootPosition[1] <<"]"<<endl;
+		cout << "Human shooted at [x,y] = " << "[" << huG->shootPosition[0] << "," << huG->shootPosition[1] << "]" << endl;
 	}
+
 	comG->shoot();
-	int x1 = comG->shootPositon[0];
-	int y1 = comG->shootPositon[1];
-	if (*huG->Board[x1, y1] == 1 ) // shoot at ship
+	int x1 = comG->shootPosition[0];
+	int y1 = comG->shootPosition[1];
+	if ((huG->getBoard(x1,y1) - 1) == 0 ) // shoot at ship
 	{
-		*huG->Board[x1, y1] = -1;
+		huG->setBoard(x1, y1, -1);
 	}
 	else 
 	{
-		*huG->Board[x1, y1] = -2;
+		huG->setBoard(x1, y1, -2);
 	}
 
 	huG->shoot();
-	int x2 = huG->shootPositon[0];
-	int y2 = huG->shootPositon[1];
-	if (*comG->Board[x2, y2] == 1) // shoot at ship
+	int x2 = huG->shootPosition[0];
+	int y2 = huG->shootPosition[1];
+	if ((comG->getBoard(x2, y2) - 1) == 0) // shoot at ship
 	{
-		*comG->Board[x2, y2] = -1;
+		comG->setBoard(x2, y2, -1);
 	}
 	else
 	{
-		*comG->Board[x2, y2] = -2;
+		comG->setBoard(x2, y2, -2);
 	}
 }
 
 bool GameControl::isGameOver()
 {
 	// check gameover
+	
 	return false;
 }
 

@@ -1,13 +1,17 @@
 #pragma once
-#include "Player.h"
-class Human : public Player
+#include "MenuProgram.h"
+class MenuGameProgram : public MenuProgram
 {
 public:
-	Human();
-	int Board[10][10];
-	void choosePosition();
-	bool checkShipPosition(int x, int y, int direct);
-	void shoot();
-	~Human();
+	MenuGameProgram();
+	void startGame();
+	void seeHighScore();
+	void gameIntroduction();
+	~MenuGameProgram();
+protected:
+	void printMenu();
+	void doTask(const int& choice);
+
+
 };
 
